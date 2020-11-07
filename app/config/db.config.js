@@ -1,8 +1,14 @@
+const { error } = require('dotenv').config();
+
+if (error) {
+    throw new Error('".env" file not provided.');
+}
+
 module.exports = {
     HOST: 'localhost',
     USER: 'root',
-    PASSWORD: 'our_super_secret_password',
-    DB: 'test_sequelize',
+    PASSWORD: process.env.PASSWORD,
+    DB: process.env.DB,
     dialect: 'mysql',
     pool: {
         max: 5, // maximum number of connection in pool
